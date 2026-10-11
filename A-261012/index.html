@@ -129,6 +129,9 @@ function init3D(p, canvas, idx){
     :new THREE.MeshStandardMaterial({color:0xffffff,roughness:0.6,metalness:0});
   const mesh=new THREE.Mesh(geo,[mat,mat,mat,mat,mat,mat]);
   scene.add(mesh);
+  // 黑色线框勾勒板件棱边（配合实际材质图片）
+  const edges=new THREE.LineSegments(new THREE.EdgesGeometry(geo),new THREE.LineBasicMaterial({color:0x111111}));
+  scene.add(edges);
 
   // 外形标注线（宽、高、厚）
   function dimLine(a,b,offset){const dir=b.clone().sub(a).normalize();
